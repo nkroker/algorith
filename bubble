@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+def bubble_sort(list)
+  list.size.times do |idx|
+    (list.size - idx -1).times do |sidx|
+      if list[sidx] > list[(sidx + 1)]
+        tmp = list[sidx]
+        list[sidx] = list[(sidx + 1)]
+        list[(sidx + 1)] = tmp
+      end
+    end
+  end
+
+  list
+end
+
+# printing out the desired output
+list = [5, 7, 14, 3, 13, 10, 4, 15, 6, 8, 11, 1, 9, 12, 2]
+puts bubble_sort(list)

@@ -1,4 +1,5 @@
-# Traverse over and then swap
+#!/usr/bin/env ruby
+
 def selection_sort(list)
   list.each do |item|
     min_index = list.index(item)
@@ -12,7 +13,7 @@ def selection_sort(list)
     tmp = list[min_index]
     list[min_index] = item
     list[list.index(item)] = tmp
-  end  
+  end
 end
 
 # printing out the desired output
