@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+def insertion_sort(list)
+  list_length = list.size
+
+  # running loop from second element to last
+  (1..(list_length - 1)).each do |idx|
+    key = list[idx]
+    sidx = idx - 1
+
+    while sidx >= 0 && (list[sidx] > key)
+      list[(sidx + 1)] = list[sidx]
+      sidx -= 1
+    end
+
+    list[(sidx + 1)] = key
+  end
+
+  list
+end
+
+# printing out the desired output
+list = [20, 5, 7, 14, 3, 13, 10, 4, 15, 6, 8, 11, 1, 9, 12, 2]
+puts insertion_sort(list)
