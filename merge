@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+def merge_sort!(list, lb, ub)
+  if lb < ub
+    mid = ((lb + ub) / 2)
+    merge_sort!(list, lb, mid)
+    merge_sort!(list, (mid + 1), ub)
+    merge(list, lb, mid, ub)
+  end
+
+  list # Returning the sorted list
+end
+
+def merge(list, lb, mid, ub)
+  i = lb
+  j = mid + 1
+  k = lb
+  b = []
+
+  while (i <= mid && j <= ub) do
+    if (list[i] <= list[j])
+      b[k] = list[i]
+      i += 1
+    else
+      b[k] = list[j]
+      j += 1
+    end
+    k += 1
+  end
+
+  if (i > mid)
+    while (j <= ub) do
+      b[k] = list[j]
+      j += 1
+      k += 1
+    end
+  else
+    while (i <= mid) do
+      b[k] = list[i]
+      i += 1
+      k += 1
+    end
+  end
+
+  for idx in lb..ub
+    list[idx] = b[idx]
+  end
+end
+
+def merge_test
+  # printing out the desired output
+  list = [5, 7, 14, 3, 13, 10, 4, 15, 6, 8, 11, 1, 9, 12, 2, 22, 20, 55, 23]
+  expectation = list.sort
+  merge_sort!(list, 0, (list.length - 1))
+  print list
+
+  if list.eql?(expectation)
+    puts "\nPassed \u{1f609} \u{1f618}"
+  else
+    puts "\n Na Ho payega tumse! \u{1f611 1F525}"
+  end
+end
+
+merge_test
